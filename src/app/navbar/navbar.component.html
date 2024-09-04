@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['']">Angular Login and Reg</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto"  >
+
+        <ng-container *ngIf="this.auth.isAuthenticated();then authenticated;else notAuthenticated">
+
+        </ng-container>
+
+
+        <ng-template #notAuthenticated>
+            <li class="nav-item" [routerLink]="['/register']"><a class="nav-link" >Register</a></li>
+            <li [routerLink]="['/login']"><a class="nav-link" href="javascript:void(0);" >Login</a></li>
+        </ng-template>
+
+        <ng-template #authenticated>
+            <li [routerLink]="['/dashboard']" class="nav-item"><a class="nav-link" >Dashboard</a></li>
+            <li><a class="nav-link" href="javascript:void(0);" (click)="logout()" >Logout</a></li>
+        </ng-template>
+    </ul>
+
+    </div>
+</nav>
